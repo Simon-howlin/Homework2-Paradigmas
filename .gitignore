@@ -1,0 +1,53 @@
+# Archivos de sistema operativo
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Archivos de compilación
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+*.log
+
+# Directorios de compilación (dependiendo de tu entorno de desarrollo)
+build/
+bin/
+obj/
+
+# Archivos de editores de texto (Visual Studio, Vim, Emacs, etc.)
+.vscode/
+.idea/
+*.swp  # Archivos temporales de Vim
+*~  # Archivos temporales de editores de texto (por ejemplo, vi, emacs)
+
+# Archivos de dependencias (npm, pip, etc.)
+node_modules/
+*.egg-info
+*.pyc
+__pycache__/
+
+# Archivos de entorno virtual de Python
+env/
+venv/
+
+# Archivos de configuración de IDE
+*.iml  # Archivos de configuración de IntelliJ IDEA
+*.sublime-workspace
+*.sublime-project
+
+# Archivos generados por otros programas
+*.class  # Archivos generados por compiladores de Java
+*.jar    # Archivos JAR de Java
+
+# Archivos de caché
+*.log
+*.bak
+*.tmp
+
+# Archivos de contenedores (Docker, por ejemplo)
+.dockerignore
+
+# Archivos de configuración de Git
+*.gitmodules
