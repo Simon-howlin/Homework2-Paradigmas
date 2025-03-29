@@ -76,6 +76,46 @@ Hora::Hora(int h, int m, int s, string p) {
     periodo = testPeriodo(p);
 }
 
+// Devuelve la hora indvidual
+int Hora::getHora() const {
+    return hora;
+}
+
+// Devuelve los minutos indvidual
+int Hora::getMinutos() const {
+    return minutos;
+}
+
+// Devuelve los segundos indvidual
+int Hora::getSegundos() const {
+    return segundos;
+}
+
+// Devuelve el periodo indvidual
+string Hora::getPeriodo() const {
+    return periodo;
+}
+
+// Setea la hora indvidual
+void Hora::setHora(int h) {
+    hora = testHora(h);
+}
+
+// Setea los minutos indvidual
+void Hora::setMinutos(int m) {
+    minutos = testMinutos(m);
+}
+
+// Setea los segundos indvidual
+void Hora::setSegundos(int s) {
+    segundos = testSegundos(s);
+}
+
+// Setea el periodo indvidual
+void Hora::setPeriodo(const std::string& p) {
+    periodo = testPeriodo(p);
+}
+
 void Hora::mostrarHora() {
     cout << setw(2) << setfill('0') << hora << "h : "
             << setw(2) << setfill('0') << minutos << "m : "
