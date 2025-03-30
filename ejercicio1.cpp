@@ -4,11 +4,12 @@
 
 using namespace std;
 
+// TEST'S DE HORAS CORRECTAS:
 int Hora::testHora(int h) {
     if (h >= 0 && h <= 12) {
         return h;
     } else {
-        return 0; // Si la hora no es válida, se pone por defecto 0
+        return 0; // Si la hora no es valida, se pone por defecto 0
     }
 }
 
@@ -16,7 +17,7 @@ int Hora::testMinutos(int m) {
     if (m >= 0 && m < 60) {
         return m;
     } else {
-        return 0;  // Si los minutos no son válidos, se pone 0
+        return 0;  // Si los minutos no son validos, se pone 0
     }
 }
 
@@ -24,7 +25,7 @@ int Hora::testSegundos(int s) {
     if (s >= 0 && s < 60) {
         return s;
     } else {
-        return 0;   // Si los segundos no son válidos, se pone 0
+        return 0;   // Si los segundos no son validos, se pone 0
     }
 }
 
@@ -32,11 +33,11 @@ string Hora::testPeriodo(string p) {
     if (p == "a.m." || p == "p.m.") {
         return p;
     } else {
-       return "a.m.";  // Valor por defecto si el periodo no es válido
+       return "a.m.";  // Valor por defecto si el periodo no es valido
     }
 }
 
-// Constructor sin parámetros (por defecto)
+// CONSTRUCTORES:
 Hora::Hora() {  
     hora = 0;
     minutos = 0;
@@ -44,7 +45,6 @@ Hora::Hora() {
     periodo = "a.m.";
 }
 
-// Constructor con hora 
 Hora::Hora(int h) {
     hora = testHora(h);
     minutos = 0;
@@ -52,7 +52,6 @@ Hora::Hora(int h) {
     periodo = "a.m.";
 }
 
-// Constructor con hora y minutos
 Hora::Hora(int h, int m) {
     hora = testHora(h);
     minutos = testMinutos(m);
@@ -60,7 +59,6 @@ Hora::Hora(int h, int m) {
     periodo = "a.m.";
 }
 
-// Constructor con hora, minutos y segundos
 Hora::Hora(int h, int m, int s) {
     hora = testHora(h);
     minutos = testMinutos(m);
@@ -68,7 +66,6 @@ Hora::Hora(int h, int m, int s) {
     periodo = "a.m.";
 }
 
-// Constructor con hora, minutos, segundos y periodo (a.m./p.m.)
 Hora::Hora(int h, int m, int s, string p) {
     hora = testHora(h);
     minutos = testMinutos(m);
@@ -76,49 +73,54 @@ Hora::Hora(int h, int m, int s, string p) {
     periodo = testPeriodo(p);
 }
 
-// Devuelve la hora indvidual
+// GET'S DE HORAS INDIVIDUALMENTE:
 int Hora::getHora() const {
     return hora;
 }
 
-// Devuelve los minutos indvidual
 int Hora::getMinutos() const {
     return minutos;
 }
 
-// Devuelve los segundos indvidual
 int Hora::getSegundos() const {
     return segundos;
 }
 
-// Devuelve el periodo indvidual
 string Hora::getPeriodo() const {
     return periodo;
 }
 
-// Setea la hora indvidual
+// SET'S DE HORAS INDIVIDUALMENTE:
 void Hora::setHora(int h) {
     hora = testHora(h);
 }
 
-// Setea los minutos indvidual
 void Hora::setMinutos(int m) {
     minutos = testMinutos(m);
 }
 
-// Setea los segundos indvidual
 void Hora::setSegundos(int s) {
     segundos = testSegundos(s);
 }
 
-// Setea el periodo indvidual
 void Hora::setPeriodo(const std::string& p) {
     periodo = testPeriodo(p);
 }
 
+// METODOS DE IMPRECION DEL RELOJ:
+// Imprecion con a.m/p.m:
 void Hora::mostrarHora() {
     cout << setw(2) << setfill('0') << hora << "h : "
             << setw(2) << setfill('0') << minutos << "m : "
             << setw(2) << setfill('0') << segundos << "s "
             << periodo << endl;
+}
+
+// Imprecion del reloj en 24 horas:
+void Hora::reloj24Horas(){
+    if (getPeriodo() == "p.m."){
+        cout << setw(2) << setfill('0') << getHora() + 12 << "hs : " << setw(2) << setfill('0') << getMinutos() << "m : " << setw(2) << setfill('0') << getSegundos() << "s " << endl;
+    }else {
+        cout << setw(2) << setfill('0') << getHora() << "hs : " << setw(2) << setfill('0') << getMinutos() << "m : " << setw(2) << setfill('0') << getSegundos() << "s " << endl;
+    }
 }

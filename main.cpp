@@ -5,13 +5,13 @@
 int main() {
     cout << "\nReloj predeterminado: "<< endl;
     // Probar la clase con diferentes constructores
-    Hora reloj1;  // Sin parámetros, se inicializa en 0h, 0m, 0s a.m.
+    Hora reloj1;  // Sin parametros, se inicializa en 0h, 0m, 0s a.m.
     reloj1.mostrarHora();
 
     Hora reloj2(10);  // Solo la hora, los minutos y segundos serán 0
     reloj2.mostrarHora();
 
-    Hora reloj3(10, 30);  // Hora y minutos, segundos serán 0
+    Hora reloj3(10, 30);  // Hora y minutos, segundos seran 0
     reloj3.mostrarHora();
 
     Hora reloj4(10, 30, 45);  // Hora, minutos y segundos
@@ -32,8 +32,12 @@ int main() {
     cout << "Segundos: " << reloj.getSegundos() << "s" << endl;
     cout << "Periodo: " << reloj.getPeriodo() << endl;
 
-    cout << "\nHora completa: " << endl;
+    cout << "\nHora completa p.m/a.m: " << endl;
     reloj.mostrarHora();  // Ejemplo: 8h : 30m : 40s p.m.
+    cout << "" << endl;
+
+    cout << "\nReloj 24hs: " << endl;
+    reloj.reloj24Horas();
     cout << "" << endl;
 
     return 0;

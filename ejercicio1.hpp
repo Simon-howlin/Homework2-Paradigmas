@@ -1,4 +1,4 @@
-#ifndef EJERCICIO1_H  // Directivas para evitar inclusión múltiple
+#ifndef EJERCICIO1_H  // Directivas para evitar inclusion multiple
 #define EJERCICIO1_H
 
 #include <iostream>
@@ -21,13 +21,13 @@ public:
     string testPeriodo(string p);
 
     // Constructores
-    Hora();  // Constructor sin parámetros
+    Hora();  // Constructor sin parametros
     Hora(int h);  // Constructor con solo la hora
     Hora(int h, int m);  // Constructor con hora y minutos
     Hora(int h, int m, int s);  // Constructor con hora, minutos y segundos
     Hora(int h, int m, int s, string p);  // Constructor con hora, minutos, segundos y periodo
 
-    // devolver individualmente
+    // Devolver individualmente
     int getHora() const;
     int getMinutos() const;
     int getSegundos() const;
@@ -40,7 +40,8 @@ public:
     void setPeriodo(const string& p);
 
     // Métodos
-    void mostrarHora();  // Método para mostrar la hora
+    void mostrarHora();  // Metodo para mostrar la hora
+    void reloj24Horas(); // Metodo para mosterar la hora en 24hs
 };
 
 #endif // EJERCICIO1_H
