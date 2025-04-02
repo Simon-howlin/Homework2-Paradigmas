@@ -38,40 +38,15 @@ string Hora::testPeriodo(string p) {
 }
 
 // CONSTRUCTORES:
-Hora::Hora() {  
-    hora = 0;
-    minutos = 0;
-    segundos = 0;
-    periodo = "a.m.";
-}
+Hora::Hora(): hora(0), minutos(0), segundos(0), periodo("a.m."){}
 
-Hora::Hora(int h) {
-    hora = testHora(h);
-    minutos = 0;
-    segundos = 0;
-    periodo = "a.m.";
-}
+Hora::Hora(int h): hora(testHora(h)), minutos(0), segundos(0), periodo("a.m."){}
 
-Hora::Hora(int h, int m) {
-    hora = testHora(h);
-    minutos = testMinutos(m);
-    segundos = 0;
-    periodo = "a.m.";
-}
+Hora::Hora(int h, int m): hora(testHora(h)), minutos(testMinutos(m)), segundos(0), periodo("a.m."){}
 
-Hora::Hora(int h, int m, int s) {
-    hora = testHora(h);
-    minutos = testMinutos(m);
-    segundos = testSegundos(s);
-    periodo = "a.m.";
-}
+Hora::Hora(int h, int m, int s): hora(testHora(h)), minutos(testMinutos(m)), segundos(testSegundos(s)), periodo("a.m."){}
 
-Hora::Hora(int h, int m, int s, string p) {
-    hora = testHora(h);
-    minutos = testMinutos(m);
-    segundos = testSegundos(s);
-    periodo = testPeriodo(p);
-}
+Hora::Hora(int h, int m, int s, string p): hora(testHora(h)), minutos(testMinutos(m)), segundos(testSegundos(s)), periodo(testPeriodo(p)){}
 
 // GET'S DE HORAS INDIVIDUALMENTE:
 int Hora::getHora() const {
@@ -110,10 +85,7 @@ void Hora::setPeriodo(const std::string& p) {
 // METODOS DE IMPRECION DEL RELOJ:
 // Imprecion con a.m/p.m:
 void Hora::mostrarHora() {
-    cout << setw(2) << setfill('0') << hora << "h : "
-            << setw(2) << setfill('0') << minutos << "m : "
-            << setw(2) << setfill('0') << segundos << "s "
-            << periodo << endl;
+    cout << setw(2) << setfill('0') << hora << "h : " << setw(2) << setfill('0') << minutos << "m : " << setw(2) << setfill('0') << segundos << "s " << periodo << endl;
 }
 
 // Imprecion del reloj en 24 horas:

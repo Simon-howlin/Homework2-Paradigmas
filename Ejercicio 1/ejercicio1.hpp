@@ -1,5 +1,5 @@
-#ifndef EJERCICIO1_H  // Directivas para evitar inclusion multiple
-#define EJERCICIO1_H
+#ifndef EJERCICIO1_HPP  // Directivas para evitar inclusion multiple
+#define EJERCICIO1_HPP
 
 #include <iostream>
 #include <string>
