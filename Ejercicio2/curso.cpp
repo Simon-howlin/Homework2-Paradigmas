@@ -1,5 +1,7 @@
 #include "curso.hpp"
+#include "estudiante.hpp"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -10,9 +12,9 @@ string Curso::getNombreCurso() {
     return nombreCurso;
 }
 
-// VER SI EL ALUMNO PERTENECE A ESE CURSO:
+// VER SI EL ALUMNO PERTENECE A ESE CURSO (-1 si no pertenece):
 int Curso::alumnoPertenece(int legajo) {
-    for (int i = 0; i < estudiantes.size(); i++) {
+    for (size_t i = 0; i < estudiantes.size(); i++) {
         if (estudiantes[i]->getLegajo() == legajo) {
             return i;
         }
@@ -45,7 +47,7 @@ bool Curso::cursoCompleto() {
 
 // PARA LA IMPRECION DE LA LISTA DE ALUMNOS ORDENADA ALFABETICAMENTE:
 void Curso::ordenarEstudiantes() {
-    std::sort(estudiantes.begin(), estudiantes.end(), [](Estudiante* a, Estudiante* b) {
+    sort(estudiantes.begin(), estudiantes.end(), [](Estudiante* a, Estudiante* b) {
         return a->getNombre() < b->getNombre();
     });
 }

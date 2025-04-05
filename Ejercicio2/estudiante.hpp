@@ -1,14 +1,13 @@
 #ifndef ESTUDIANTE_HPP
 #define ESTUDIANTE_HPP
 
-#include "curso.hpp"
 #include <string>
 #include <vector>
 #include <utility> // para pair
 
 using namespace std;
 
-// class Curso;
+class Curso;
 class Estudiante {
 private:
     string nombreCompleto;

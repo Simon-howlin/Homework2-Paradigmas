@@ -1,12 +1,12 @@
 #ifndef CURSO_HPP
 #define CURSO_HPP
 
-#include "estudiante.hpp"
 #include <vector>
+#include <string>
 
 using namespace std;
 
-// class Estudiante;
+class Estudiante;
 class Curso {
 private:
     string nombreCurso;
