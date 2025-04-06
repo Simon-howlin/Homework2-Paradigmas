@@ -1,6 +1,8 @@
 #ifndef NUMTYPES_HPP
 #define NUMTYPES_HPP
 
+#include <sstream>
+#include <stdexcept>
 #include "numero.hpp"
 
 using namespace std;
