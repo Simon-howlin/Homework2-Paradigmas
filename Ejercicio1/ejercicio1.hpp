@@ -2,6 +2,8 @@
 #define EJERCICIO1_HPP
 
 #include <iostream>
+#include <iomanip> 
+#include <limits>
 #include <string>
 
 using namespace std;
@@ -14,11 +16,6 @@ private:
     string periodo;  // "a.m." o "p.m."
 
 public:
-    // Check de horario correcto
-    int testHora(int h);
-    int testMinutos(int m);
-    int testSegundos(int s);
-    string testPeriodo(string p);
 
     // Constructores
     Hora();  // Constructor sin parametros
@@ -43,5 +40,9 @@ public:
     void mostrarHora();  // Metodo para mostrar la hora
     void reloj24Horas(); // Metodo para mosterar la hora en 24hs
 };
+
+// Check de horario correcto y pedir
+int pedirEntero(const string mensaje, int min, int max);
+string pedirPeriodo();
 
 #endif // EJERCICIO1_H

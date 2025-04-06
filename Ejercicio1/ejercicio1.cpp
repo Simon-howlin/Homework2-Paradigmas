@@ -1,52 +1,45 @@
-#include <iostream>
-#include <iomanip> 
 #include "ejercicio1.hpp"
 
 using namespace std;
 
-// TEST'S DE HORAS CORRECTAS:
-int Hora::testHora(int h) {
-    if (h >= 0 && h <= 12) {
-        return h;
-    } else {
-        return 0; // Si la hora no es valida, se pone por defecto 0
+// PIDE Y TESTEA EL TIPEMPO 
+int pedirEntero(const string mensaje, int min, int max) {
+    int valor;
+    while (true) {
+        cout << mensaje;
+        cin >> valor;
+
+        if (valor < min || valor > max) {
+            cout << "Valor inválido. Debe estar entre " << min << " y " << max << ". Intente de nuevo.\n";
+        } else {
+            return valor;
+        }
     }
 }
 
-int Hora::testMinutos(int m) {
-    if (m >= 0 && m < 60) {
-        return m;
-    } else {
-        return 0;  // Si los minutos no son validos, se pone 0
-    }
-}
-
-int Hora::testSegundos(int s) {
-    if (s >= 0 && s < 60) {
-        return s;
-    } else {
-        return 0;   // Si los segundos no son validos, se pone 0
-    }
-}
-
-string Hora::testPeriodo(string p) {
-    if (p == "a.m." || p == "p.m.") {
-        return p;
-    } else {
-       return "a.m.";  // Valor por defecto si el periodo no es valido
+string pedirPeriodo() {
+    string p;
+    while (true) {
+        cout << "Ingrese el periodo (a.m. / p.m.): ";
+        cin >> p;
+        if (p == "a.m." || p == "p.m.") {
+            return p;
+        } else {
+            cout << "Periodo inválido. Intente de nuevo.\n";
+        }
     }
 }
 
 // CONSTRUCTORES:
 Hora::Hora(): hora(0), minutos(0), segundos(0), periodo("a.m."){}
 
-Hora::Hora(int h): hora(testHora(h)), minutos(0), segundos(0), periodo("a.m."){}
+Hora::Hora(int h): hora(h), minutos(0), segundos(0), periodo("a.m."){}
 
-Hora::Hora(int h, int m): hora(testHora(h)), minutos(testMinutos(m)), segundos(0), periodo("a.m."){}
+Hora::Hora(int h, int m): hora(h), minutos(m), segundos(0), periodo("a.m."){}
 
-Hora::Hora(int h, int m, int s): hora(testHora(h)), minutos(testMinutos(m)), segundos(testSegundos(s)), periodo("a.m."){}
+Hora::Hora(int h, int m, int s): hora(h), minutos(m), segundos(s), periodo("a.m."){}
 
-Hora::Hora(int h, int m, int s, string p): hora(testHora(h)), minutos(testMinutos(m)), segundos(testSegundos(s)), periodo(testPeriodo(p)){}
+Hora::Hora(int h, int m, int s, string p): hora(h), minutos(m), segundos(s), periodo(p){}
 
 // GET'S DE HORAS INDIVIDUALMENTE:
 int Hora::getHora() const {
@@ -67,19 +60,19 @@ string Hora::getPeriodo() const {
 
 // SET'S DE HORAS INDIVIDUALMENTE:
 void Hora::setHora(int h) {
-    hora = testHora(h);
+    hora = h;
 }
 
 void Hora::setMinutos(int m) {
-    minutos = testMinutos(m);
+    minutos = m;
 }
 
 void Hora::setSegundos(int s) {
-    segundos = testSegundos(s);
+    segundos = s;
 }
 
 void Hora::setPeriodo(const std::string& p) {
-    periodo = testPeriodo(p);
+    periodo = p;
 }
 
 // METODOS DE IMPRECION DEL RELOJ:

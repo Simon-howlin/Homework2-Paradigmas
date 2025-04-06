@@ -2,6 +2,7 @@
 #define ESTUDIANTE_HPP
 
 #include <string>
+#include <iostream>
 #include <vector>
 #include <utility> // para pair
 

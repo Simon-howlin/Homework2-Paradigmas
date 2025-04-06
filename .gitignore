@@ -25,21 +25,7 @@ obj/
 # Archivos de dependencias (npm, pip, etc.)
 node_modules/
 *.egg-info
-*.pyc
-__pycache__/
-
-# Archivos de entorno virtual de Python
-env/
-venv/
-
-# Archivos de configuración de IDE
-*.iml  # Archivos de configuración de IntelliJ IDEA
-*.sublime-workspace
-*.sublime-project
-
-# Archivos generados por otros programas
-*.class  # Archivos generados por compiladores de Java
-*.jar    # Archivos JAR de Java
+.vscode/
 
 # Archivos de caché
 *.log

@@ -1,7 +1,5 @@
 #include "curso.hpp"
 #include "estudiante.hpp"
-#include <iostream>
-#include <algorithm>
 
 using namespace std;
 
@@ -10,6 +8,11 @@ Curso::Curso(string nombreCurso): nombreCurso(nombreCurso){}
 
 string Curso::getNombreCurso() {
     return nombreCurso;
+}
+
+// CAPACIDAD MAXIMA DE ESTUDIANTES DEL CURSO ALCANZADA:
+bool Curso::cursoCompleto() {
+    return estudiantes.size() == 20;
 }
 
 // VER SI EL ALUMNO PERTENECE A ESE CURSO (-1 si no pertenece):
@@ -24,14 +27,23 @@ int Curso::alumnoPertenece(int legajo) {
 }
 
 // AGREGAR / SACAR ESTUDIANTE DE UN CURSO:
-void Curso::agregarEstudiante(Estudiante* e) {
+bool Curso::agregarEstudiante(shared_ptr<Estudiante> e) {
+    if (cursoCompleto()) {
+        cout << "[ERROR]: El curso esta completo\n";
+        return false;
+    }
+    else if (alumnoPertenece(e->getLegajo()) != -1) {
+        cout << "[ERROR]: El alumno ya pertenece\n";
+        return false;
+    }
+
     estudiantes.push_back(e);
+    return true;
 }
 
 void Curso::sacarEstudiante(int legajo) {
     int posEstudiante = alumnoPertenece(legajo);
     if (posEstudiante != -1) {
-        delete estudiantes[posEstudiante];
         estudiantes.erase(estudiantes.begin() + posEstudiante);
         cout << "Estudiante eliminado del curso.\n";
         return;
@@ -40,41 +52,28 @@ void Curso::sacarEstudiante(int legajo) {
     }
 }
 
-// CAPACIDAD MAXIMA DE ESTUDIANTES DEL CURSO ALCANZADA:
-bool Curso::cursoCompleto() {
-    return estudiantes.size() == 20;
+vector<shared_ptr<Estudiante>> Curso::getEstudiantes(){
+    return estudiantes;
 }
 
 // PARA LA IMPRECION DE LA LISTA DE ALUMNOS ORDENADA ALFABETICAMENTE:
 void Curso::ordenarEstudiantes() {
-    sort(estudiantes.begin(), estudiantes.end(), [](Estudiante* a, Estudiante* b) {
+    vector<shared_ptr<Estudiante>> sortEstudiantes = estudiantes;
+    sort(sortEstudiantes.begin(), sortEstudiantes.end(), [](shared_ptr<Estudiante> a, shared_ptr<Estudiante> b) {
         return a->getNombre() < b->getNombre();
     });
+
+    listarEstudiantes(sortEstudiantes);
 }
 
-void Curso::listarEstudiantes() const {
-    for (const auto& e : estudiantes) {
+void Curso::listarEstudiantes(vector<shared_ptr<Estudiante>> estudiantes) const {
+    for (const shared_ptr<Estudiante>& e : estudiantes) {
         cout << "Nombre: " << e->getNombre() << " | Legajo: " << e->getLegajo() << " | Promedio: " << e->getPromedio() << endl;
     }
 }
 
-// DEEPCOPY DE UN CURSO X, Y SU DESTRUCTOR PARA EVITAR MEMORY LEAK
+// SHALLOW COPY
 Curso::Curso(const Curso& otro) {
     nombreCurso = otro.nombreCurso;
-
-    // deep copy:
-    // Por cada estudiante del curso original, creo un nuevo estudiante
-    // con los mismos datos. Así el nuevo curso no comparte punteros,
-    // y se puede modificar sin afectar al original.
-    for (Estudiante* e : otro.estudiantes) {
-        estudiantes.push_back(new Estudiante(*e));  // usa el vector del anterior curso para llenar el nuevo curso con los datos 
-    }
-}
-
-Curso::~Curso() {
-    // Libera todos los punteros a estudiantes
-    for (Estudiante* e : estudiantes) {
-        delete e;
-    }
-    estudiantes.clear();
+    estudiantes = otro.estudiantes;
 }

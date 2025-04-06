@@ -1,5 +1,3 @@
-#include <sstream>
-#include <stdexcept>
 #include "numType.hpp"
 
 using namespace std;

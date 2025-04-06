@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
+#include <algorithm>
+#include <memory> 
 
 using namespace std;
 
@@ -10,23 +13,22 @@ class Estudiante;
 class Curso {
 private:
     string nombreCurso;
-    vector<Estudiante*> estudiantes;
+    vector<shared_ptr<Estudiante>> estudiantes;
 
 public:
     Curso(string nombreCurso);
 
     string getNombreCurso();
     int alumnoPertenece(int legajo);
-    void agregarEstudiante(Estudiante* e);
+    bool agregarEstudiante(shared_ptr<Estudiante> e);
     void sacarEstudiante(int legajo);
+    vector<shared_ptr<Estudiante>> getEstudiantes();
 
     bool cursoCompleto();
     void ordenarEstudiantes();
-    void listarEstudiantes() const;
+    void listarEstudiantes(vector<shared_ptr<Estudiante>> sortEstudiantes) const;
 
     Curso(const Curso& otro);    // Constructor de copia
-    //Curso& operator=(const Curso& otro);  // Operador de asignación  --> EN DUDA, SI ES NECESARIO O SOLO CON UN DEEPCOPY  DESDE 0 VA.
-    ~Curso();         // Destructor
 };  
 
 #endif

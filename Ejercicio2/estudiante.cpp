@@ -1,6 +1,5 @@
 #include "estudiante.hpp"
 #include "curso.hpp"
-#include <iostream>
 
 using namespace std;
 
