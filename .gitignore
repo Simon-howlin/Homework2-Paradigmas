@@ -13,7 +13,6 @@ Thumbs.db  # Windows
 
 # Directorios de compilación (dependiendo de tu entorno de desarrollo)
 build/
-bin/
 obj/
 
 # Archivos de editores de texto (Visual Studio, Vim, Emacs, etc.)
