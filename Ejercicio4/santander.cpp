@@ -4,7 +4,6 @@ Santander::Santander(string titular, double saldo): balance(saldo), titularCuent
 
 void Santander::depositar(double monto) {
     balance += monto;
-
     cout << "Se a efectuado el deposito correctamente!\n";
     cout << "El saldo actual es de " << balance << " pesos.\n" << endl;
 
@@ -46,12 +45,7 @@ void CajaDeAhorro::mostrarInfo() {
 CuentaCorriente::CuentaCorriente(string titular, double saldo, shared_ptr<CajaDeAhorro> cajaVinculada): Santander(titular, saldo), cajaVinculada(cajaVinculada) {}
 
 bool CuentaCorriente::retirar(double monto) {
-    if (monto > balance || monto < 0) {
-        if (monto < 0) {
-            cout << "[ERROR]: No se puede retirar valor negativo.\n";
-            return false;
-        }
-
+    if (monto > balance) {
         monto -= balance;
         if (monto > cajaVinculada->balance ) {
             cout << "No se pudo retirar el monto, fondos insuficientes.\n";

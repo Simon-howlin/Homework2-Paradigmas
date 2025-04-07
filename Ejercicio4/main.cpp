@@ -18,6 +18,14 @@ int main() {
 
     cout << "Ingrese el saldo inicial: ";
     cin >> saldoInicial;
+    while (saldoInicial < 0){
+        if (saldoInicial < 0) {
+            cout << "[ERROR]: el saldo inicial no puede ser negativo.\n";
+        }
+
+        cout << "Ingrese el saldo inicial: ";
+        cin >> saldoInicial;
+    }
 
     // Crear las cuentas
     auto caja = make_shared<CajaDeAhorro>(nombreTitular, saldoInicial);
@@ -46,11 +54,26 @@ int main() {
                     double monto;
                     cout << "Ingrese el monto a depositar: ";
                     cin >> monto;
+                    while(monto < 0){
+                        if(monto < 0){
+                            cout << "[ERROR]: no se puede depositar un monto negativo.\n";
+                        }
+                        cout << "Ingrese el monto a depositar: ";
+                        cin >> monto;
+                    }
                     corriente.depositar(monto);
                 } else if (subopcion == 2) {
                     double monto;
                     cout << "Ingrese el monto a retirar: ";
                     cin >> monto;
+                    while (monto < 0) {
+                        if (monto < 0) {
+                            cout << "[ERROR]: No se puede retirar un monto negativo.\n";
+                        }
+
+                        cout << "Ingrese el monto a retirar: ";
+                        cin >> monto;
+                    }
                     corriente.retirar(monto);
                 } else if (subopcion == 3) {
                     corriente.mostrarInfo();
@@ -73,11 +96,27 @@ int main() {
                     double monto;
                     cout << "Ingrese el monto a depositar: ";
                     cin >> monto;
+                    while(monto < 0){
+                        if(monto < 0){
+                            cout << "[ERROR]: no se puede depositar un monto negativo.\n";
+                        }
+
+                        cout << "Ingrese el monto a depositar: ";
+                        cin >> monto;
+                    }
                     caja->depositar(monto);
                 } else if (subopcion == 2) {
                     double monto;
                     cout << "Ingrese el monto a retirar: ";
                     cin >> monto;
+                    while (monto < 0) {
+                        if (monto < 0) {
+                            cout << "[ERROR]: No se puede retirar un monto negativo.\n";
+                        }
+
+                        cout << "Ingrese el monto a retirar: ";
+                        cin >> monto;
+                    }
                     caja->retirar(monto);
                 } else if (subopcion == 3) {
                     caja->mostrarInfo();
